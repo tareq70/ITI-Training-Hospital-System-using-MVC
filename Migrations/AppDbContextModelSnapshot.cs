@@ -48,7 +48,7 @@ namespace ITI_Training_Hospital_System.Migrations
 
                     b.HasIndex("Hos_id");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Doctors", (string)null);
                 });
 
             modelBuilder.Entity("ITI_Training_Hospital_System.Models.Entites.Hospital", b =>
@@ -73,7 +73,7 @@ namespace ITI_Training_Hospital_System.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Hospitals");
+                    b.ToTable("Hospitals", (string)null);
                 });
 
             modelBuilder.Entity("ITI_Training_Hospital_System.Models.Entites.MedicalRecord", b =>
@@ -98,7 +98,7 @@ namespace ITI_Training_Hospital_System.Migrations
 
                     b.HasIndex("Pat_id");
 
-                    b.ToTable("MedicalRecords");
+                    b.ToTable("MedicalRecords", (string)null);
                 });
 
             modelBuilder.Entity("ITI_Training_Hospital_System.Models.Entites.Patient", b =>
@@ -128,7 +128,7 @@ namespace ITI_Training_Hospital_System.Migrations
 
                     b.HasIndex("Hospital_id");
 
-                    b.ToTable("Patients");
+                    b.ToTable("Patients", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

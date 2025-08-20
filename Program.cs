@@ -1,7 +1,9 @@
+using ITI_Training_Hospital_System.Models;
 using ITI_Training_Hospital_System.Models.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-using Microsoft.AspNetCore.Identity;
 
 namespace ITI_Training_Hospital_System
 {
@@ -25,6 +27,7 @@ namespace ITI_Training_Hospital_System
               .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
 
+            //builder.Services.AddTransient<IEmailSender, EmailConfirm>();
 
 
 
