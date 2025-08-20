@@ -2,7 +2,10 @@
 
 ## Overview
 Hospital Management System is a web application built with **ASP.NET Core MVC**, **Entity Framework Core**, and **Identity Scaffolding**.  
-The system aims to manage hospital data (hospitals, patients, doctors, medical records) with secure authentication, authorization, and account management.
+The system aims to manage hospital data (hospitals, patients, doctors, medical records) with secure authentication, authorization, and account management.  
+
+This project was developed as an **individual task required by ITI**.  
+I built it completely by myself, and it was later reviewed and verified by the supervisor.
 
 ---
 
@@ -35,3 +38,9 @@ The system aims to manage hospital data (hospitals, patients, doctors, medical r
 - SQL Server
 - Bootstrap
 
+---
+
+## Installation & Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/HospitalManagementSystem.git
