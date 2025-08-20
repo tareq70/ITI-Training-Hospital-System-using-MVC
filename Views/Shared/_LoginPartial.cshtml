@@ -1,0 +1,55 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<style>
+    .modern-btn {
+        border-radius: 25px;         
+        padding: 6px 16px;
+        font-weight: 500;
+        transition: all 0.3s ease;  
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15); 
+    }
+
+    .modern-btn:hover {
+        transform: translateY(-2px); 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+</style>
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item me-2">
+            <a id="manage" class="btn btn-primary modern-btn"
+               asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                <i class="bi bi-person-circle"></i> Hello @UserManager.GetUserName(User)!
+            </a>
+        </li>
+        <li class="nav-item">
+            <form id="logoutForm" class="form-inline d-inline"
+                  asp-area="Identity"
+                  asp-page="/Account/Logout"
+                  asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"
+                  onsubmit="return confirm('Do you want to go out?');">
+                <button id="logout" type="submit" class="btn btn-danger modern-btn">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item me-2">
+            <a class="btn btn-success modern-btn" id="register" asp-area="Identity" asp-page="/Account/Register">
+                <i class="bi bi-pencil-square"></i> Register
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-info modern-btn text-white" id="login" asp-area="Identity" asp-page="/Account/Login">
+                <i class="bi bi-box-arrow-in-right"></i> Login
+            </a>
+        </li>
+    }
+</ul>

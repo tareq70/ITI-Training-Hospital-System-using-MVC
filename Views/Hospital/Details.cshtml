@@ -1,0 +1,56 @@
+﻿@model ITI_Training_Hospital_System.Models.Entites.Hospital
+
+@{
+    ViewData["Title"] = "Hospital Details";
+}
+
+<h2 class="mb-4 text-primary">Hospital Details</h2>
+
+<div class="card shadow-sm mb-4 border-primary">
+    <div class="card-body">
+        <h4 class="card-title text-primary">@Model.Name</h4>
+        <p class="mb-2"><strong>Address:</strong> @Model.Address</p>
+        <p class="mb-0"><strong>City:</strong> @Model.City</p>
+    </div>
+</div>
+
+@if (Model.Patients != null && Model.Patients.Any())
+{
+    <div class="card shadow-sm border-success">
+        <div class="card-header bg-success text-white">
+            Patients List
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Diagnosis</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var patient in Model.Patients)
+                    {
+                        <tr>
+                            <td>@patient.Name</td>
+                            <td>@patient.Diagnosis</td>
+                            <td>@patient.Address</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">No patients found for this hospital.</div>
+}
+
+<div class="mt-4">
+    <a class="btn btn-warning me-2" asp-action="Update" asp-route-id="@Model.Id">Edit</a>
+    <a class="btn btn-danger me-2" asp-action="Delete" asp-route-id="@Model.Id"
+       onclick="return confirm('Are you sure you want to delete this hospital?');">Delete</a>
+    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+</div>

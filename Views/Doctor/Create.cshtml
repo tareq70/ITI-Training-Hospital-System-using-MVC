@@ -1,0 +1,39 @@
+﻿@using ITI_Training_Hospital_System.Models.View_Models
+@model DoctorVM
+
+<h2>Add New Doctor</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Qualification" class="form-label"></label>
+        <input asp-for="Qualification" class="form-control" />
+        <span asp-validation-for="Qualification" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Salary" class="form-label"></label>
+        <input asp-for="Salary" class="form-control" type="number" step="0.01"/>
+        <span asp-validation-for="Salary" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Hos_id" class="form-label">Hospital</label>
+        <select asp-for="Hos_id" class="form-select" asp-items="@(ViewBag.Hospitals as SelectList)">
+            <option value="">-- Select Hospital --</option>
+        </select>
+        <span asp-validation-for="Hos_id" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Doctor</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

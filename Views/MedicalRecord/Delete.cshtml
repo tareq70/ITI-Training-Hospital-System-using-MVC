@@ -1,0 +1,50 @@
+﻿@using ITI_Training_Hospital_System.Models.Entites
+@model MedicalRecord
+
+@{
+    ViewData["Title"] = "Delete Medical Record";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0">Confirm Delete</h3>
+                </div>
+                <div class="card-body">
+                    <p>Are you sure you want to delete the following medical record?</p>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item"><strong>Patient Name:</strong> @Model.Patient?.Name</li>
+                        <li class="list-group-item"><strong>Date of Examination:</strong> @Model.DateOfExamination.ToString("dd MMM yyyy")</li>
+                        <li class="list-group-item"><strong>Problem:</strong> @Model.Problem</li>
+                    </ul>
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 10px;
+    }
+
+    .card-header h3 {
+        font-weight: bold;
+    }
+
+    .list-group-item strong {
+        width: 150px;
+        display: inline-block;
+    }
+</style>

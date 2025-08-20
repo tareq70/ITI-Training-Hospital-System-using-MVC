@@ -1,0 +1,35 @@
+﻿@model ITI_Training_Hospital_System.Models.View_Models.PatientVM
+
+<h2>Create Patient</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Diagnosis" class="form-label"></label>
+        <input asp-for="Diagnosis" class="form-control" />
+        <span asp-validation-for="Diagnosis" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Hos_id" class="form-label">Hospital</label>
+        <select asp-for="Hos_id" class="form-control"
+                asp-items="@(new SelectList(ViewBag.Hospitals, "Id", "Name"))">
+            <option value="">-- Select Hospital --</option>
+        </select>
+        <span asp-validation-for="Hos_id" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

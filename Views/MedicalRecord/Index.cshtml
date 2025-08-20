@@ -1,0 +1,71 @@
+﻿@using ITI_Training_Hospital_System.Models.Entites
+@model IEnumerable<MedicalRecord>
+
+@{
+    ViewData["Title"] = "Medical Records";
+}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+@if (TempData["Deletes"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>@TempData["Deletes"]</strong> has been deleted successfully.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4 display-5">Medical Records</h1>
+    <p class="text-center text-muted mb-4">Overview of all patient medical records</p>
+    <div class="text-center mb-4">
+        <a asp-action="Create" class="btn btn-primary">Add New Medical Record</a>
+    </div>
+
+    <div class="list-group">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var record in Model)
+            {
+                <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center mb-3 shadow-sm rounded hover-effect">
+                    <div>
+                        <h5 class="mb-1 text-primary">@record.Patient?.Name</h5>
+                        <p class="mb-1"><strong>Date Of Examination:</strong> @record.DateOfExamination.ToString("dd MMM yyyy")</p>
+                        <p class="mb-0"><strong>Problem:</strong> @record.Problem</p>
+                    </div>
+                    <div>
+                        <a asp-action="Details" asp-controller="MedicalRecord" asp-route-id="@record.Id" class="btn btn-sm btn-primary me-2">Details</a>
+                        <a asp-action="Update" asp-controller="MedicalRecord" asp-route-id="@record.Id" class="btn btn-sm btn-warning me-2">Edit</a>
+                        <a asp-action="Delete" asp-controller="MedicalRecord" asp-route-id="@record.Id" class="btn btn-sm btn-danger"
+                            onclick="return confirm('Are you sure you want to delete this hospital?');">
+                            Delete 
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="text-center text-muted">
+                No medical records found.
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .hover-effect:hover {
+        background-color: #e3f2fd;
+        transform: translateY(-3px);
+        transition: all 0.3s ease;
+    }
+
+    .list-group-item h5 {
+        font-weight: bold;
+        font-size: 1.25rem;
+    }
+
+    .list-group-item p {
+        margin: 0;
+        font-size: 0.95rem;
+    }
+</style>

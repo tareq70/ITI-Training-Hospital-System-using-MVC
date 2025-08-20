@@ -1,0 +1,196 @@
+﻿@{
+    ViewData["Title"] = "Hospital Dashboard";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4 display-4">Hospital Management System</h1>
+    <p class="text-center lead mb-5">Manage Patients, Doctors, and Hospitals efficiently</p>
+
+    <div class="row g-4">
+        <!-- Hospitals Card -->
+        <div class="col-md-4">
+            <div class="card dashboard-card h-100 text-white bg-gradient-primary">
+                <div class="card-body text-center">
+                    <div class="mb-3 icon-bounce">
+                        <i class="bi bi-building fs-1"></i>
+                    </div>
+                    <h5 class="card-title">Hospitals</h5>
+                    <p class="card-text fs-2 fw-bold count">@ViewBag.HospitalsCount</p>
+                    <a asp-controller="Hospital" asp-action="Index" class="btn btn-light btn-sm">View Hospitals</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Patients Card -->
+        <div class="col-md-4">
+            <div class="card dashboard-card h-100 text-white bg-gradient-success">
+                <div class="card-body text-center">
+                    <div class="mb-3 icon-bounce">
+                        <i class="bi bi-person-fill fs-1"></i>
+                    </div>
+                    <h5 class="card-title">Patients</h5>
+                    <p class="card-text fs-2 fw-bold count">@ViewBag.PatientsCount</p>
+                    <a asp-controller="Patient" asp-action="Index" class="btn btn-light btn-sm">View Patients</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Doctors Card -->
+        <div class="col-md-4">
+            <div class="card dashboard-card h-100 text-white bg-gradient-warning">
+                <div class="card-body text-center">
+                    <div class="mb-3 icon-bounce">
+                        <i class="bi bi-person-badge-fill fs-1"></i>
+                    </div>
+                    <h5 class="card-title">Doctors</h5>
+                    <p class="card-text fs-2 fw-bold count">@ViewBag.DoctorsCount</p>
+                    <a asp-controller="Doctor" asp-action="Index" class="btn btn-light btn-sm">View Doctors</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="mt-5">
+        <h3 class="mb-3">Quick Actions</h3>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <a asp-controller="Patient" asp-action="Create" class="btn btn-outline-primary w-100 py-3 action-btn">
+                    Add New Patient
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a asp-controller="Doctor" asp-action="Create" class="btn btn-outline-success w-100 py-3 action-btn">
+                    Add New Doctor
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a asp-controller="Hospital" asp-action="Create" class="btn btn-outline-warning w-100 py-3 action-btn">
+                    Add New Hospital
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- General Guidelines -->
+    <div class="mt-5">
+        <h3 class="mb-4">General Guidelines</h3>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card guideline-card h-100 text-center shadow-sm p-3">
+                    <div class="mb-3 icon-bounce">
+                        <i class="bi bi-shield-lock fs-1 text-primary"></i>
+                    </div>
+                    <h5 class="card-title">Data Privacy</h5>
+                    <p class="card-text">Always protect patient data and follow hospital security protocols.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card guideline-card h-100 text-center shadow-sm p-3">
+                    <div class="mb-3 icon-bounce">
+                        <i class="bi bi-clock fs-1 text-success"></i>
+                    </div>
+                    <h5 class="card-title">Timely Updates</h5>
+                    <p class="card-text">Keep patient and doctor records up to date for accurate reporting.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card guideline-card h-100 text-center shadow-sm p-3">
+                    <div class="mb-3 icon-bounce">
+                        <i class="bi bi-people fs-1 text-warning"></i>
+                    </div>
+                    <h5 class="card-title">Collaboration</h5>
+                    <p class="card-text">Encourage teamwork between doctors, nurses, and administrative staff.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        body {
+            background: linear-gradient(120deg, #f0f8ff, #e6f7ff);
+        }
+
+        .dashboard-card {
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+            .dashboard-card:hover {
+                transform: translateY(-10px) scale(1.05);
+                box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+            }
+
+        .bg-gradient-primary {
+            background: linear-gradient(45deg, #007bff, #00c6ff);
+        }
+
+        .bg-gradient-success {
+            background: linear-gradient(45deg, #28a745, #85e085);
+        }
+
+        .bg-gradient-warning {
+            background: linear-gradient(45deg, #ffc107, #ffec99);
+        }
+
+        .guideline-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+            .guideline-card:hover {
+                transform: translateY(-5px) scale(1.02);
+                box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            }
+
+        /* Icon bounce animation */
+        .icon-bounce i {
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        keyframes bounce {
+            0%, 20%, 50%, 80%, 100%
+
+        {
+            transform: translateY(0);
+        }
+
+        40% {
+            transform: translateY(-10px);
+        }
+
+        60% {
+            transform: translateY(-5px);
+        }
+
+        }
+
+        .action-btn {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+            .action-btn:hover {
+                transform: scale(1.05);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+    </style>
+}
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.2.0/countUp.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var counters = document.querySelectorAll('.count');
+            counters.forEach(function(counter) {
+                var countUp = new CountUp(counter, parseInt(counter.innerText));
+                if (!countUp.error) countUp.start();
+            });
+        });
+    </script>
+}
