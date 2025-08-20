@@ -8,6 +8,10 @@ This project was developed as an **individual task required by ITI**.
 I built it completely by myself, and it was later reviewed and verified by the supervisor.
 
 ---
+## ERD 
+<img width="675" height="483" alt="ERD for hospital" src="https://github.com/user-attachments/assets/2cfcc877-3a17-4685-918c-467114368c42" />
+
+---
 
 ## Features
 - **Authentication & Authorization**
