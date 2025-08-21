@@ -24,6 +24,7 @@ I built it completely by myself, and it was later reviewed and verified by the s
 - **User & Role Management**
   - Create, assign, and manage roles.
   - Assign users to specific roles.
+  - Must Confirm Email to Register
   - Different permissions for Admin, Doctor, Patient, and Nurse.
 
 - **Hospital Management (CRUD Operations)**
@@ -42,9 +43,3 @@ I built it completely by myself, and it was later reviewed and verified by the s
 - SQL Server
 - Bootstrap
 
----
-
-## Installation & Setup
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/HospitalManagementSystem.git
