@@ -27,7 +27,7 @@ namespace ITI_Training_Hospital_System
               .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
 
-            //builder.Services.AddTransient<IEmailSender, EmailConfirm>();
+            builder.Services.AddTransient<IEmailSender, EmailConfirm>();
 
 
 

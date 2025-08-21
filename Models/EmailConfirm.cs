@@ -4,27 +4,30 @@ using System.Net.Mail;
 
 namespace ITI_Training_Hospital_System.Models
 {
-    public class EmailConfirm /*: IEmailSender*/
+    public class EmailConfirm : IEmailSender
     {
-        //public async Task SendEmailAsync(string email, string subject, string htmlMessage)
-        //{
-        //    var fmail = "*************@gmail.com";
-        //    var fPassword = "******************";
+        public async Task SendEmailAsync(string email, string subject, string htmlMessage)
+        {
+            var fmail = "tarekelspagh707@gmail.com";
+            var fPassword = "zdcu zqyp ahjr eude";
 
-        //    var themsg = new MailMessage();
-        //    themsg.From =new MailAddress(fmail);
-        //    themsg.Subject = subject;
-        //    themsg.To.Add(fmail);
-        //    themsg.Body = $"<html><body>{htmlMessage}</body></html>";
-        //    themsg.IsBodyHtml = false;
+            var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("tarekelspagh707@gmail.com", "zdcu zqyp ahjr eude"),
+                EnableSsl = true,
+            };
 
-        //    var smtpClient = new SmtpClient("smtp-mail.outlook.com")
-        //    {
-        //        EnableSsl = true,
-        //        Credentials = new NetworkCredential(fmail,fPassword),
-        //        Port=587
-        //    };
-        //    smtpClient.Send(themsg);
-        //}
+            var themsg = new MailMessage();
+            themsg.From = new MailAddress(fmail);
+            themsg.Subject = subject;
+            themsg.To.Add(email);
+            themsg.Body = $"<html><body>{htmlMessage}</body></html>";
+            themsg.IsBodyHtml = false;
+
+            smtpClient.Send(themsg);
+
+
+        }
     }
 }

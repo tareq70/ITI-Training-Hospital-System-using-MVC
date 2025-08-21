@@ -119,7 +119,7 @@ namespace ITI_Training_Hospital_System.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-                user.EmailConfirmed = true;
+                //user.EmailConfirmed = true;
 
                 await _userManager.AddToRoleAsync(user, ClsRoles.roleUser);
 
